@@ -229,7 +229,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 14, y: 14, z: 19, w: 10}
     rect:
       serializedVersion: 2
       x: 3706
@@ -397,7 +397,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 21, y: 14, z: 24, w: 10}
     rect:
       serializedVersion: 2
       x: 382
@@ -670,11 +670,11 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 15, y: 11, z: 15, w: 10}
     rect:
       serializedVersion: 2
       x: 3328
-      y: 1111
+      y: 1113
       width: 370
       height: 133
     spriteID: 99df44d8dbdd9454cb14443917b59c93
@@ -1447,7 +1447,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 21, y: 17, z: 19, w: 15}
     rect:
       serializedVersion: 2
       x: 2572
@@ -1888,7 +1888,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 16, y: 17, z: 18, w: 19}
     rect:
       serializedVersion: 2
       x: 2572

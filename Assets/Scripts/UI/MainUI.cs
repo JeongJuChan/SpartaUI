@@ -18,7 +18,8 @@ public class MainUI : MonoBehaviour
     [SerializeField] private GameObject mainChoicePanel;
     [SerializeField] private Button statusButton;
     [SerializeField] private Button inventoryButton;
-
+    [SerializeField] private GameObject statusPanel;
+    [SerializeField] private GameObject inventoryPanel;
 
     private void OnEnable()
     {
@@ -26,8 +27,6 @@ public class MainUI : MonoBehaviour
         statusButton.onClick.AddListener(OnClickStatusButton);
         inventoryButton.onClick.AddListener(OnClickInventoryButton);
     }
-
-    
 
     private void OnDisable()
     {
@@ -44,13 +43,13 @@ public class MainUI : MonoBehaviour
 
     private void OnClickInventoryButton()
     {
-
+        inventoryPanel.SetActive(true);
         mainChoicePanel.SetActive(false);
     }
 
     private void OnClickStatusButton()
     {
-
+        statusPanel.SetActive(true);
         mainChoicePanel.SetActive(false);
     }
 }

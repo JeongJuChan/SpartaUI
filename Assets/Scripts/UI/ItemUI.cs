@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class ItemUI : MonoBehaviour
 {
-    [field : SerializeField]
     public Image Icon { get; private set; }
-    [field : SerializeField]
-    public ItemData ItemData { get; private set; }
+    public ItemData Data { get; private set; }
 
     [Header("Interaction")]
     [SerializeField] private Button itemClickButton;
-    [SerializeField] private GameObject equipmentPanel;
+    [SerializeField] private GameObject equipBackgroundImage;
 
+    public event Action<bool, ItemUI> OnItemClicked;
 
-    // InventoryUI의 InitItem에서 event로 꺼고 켜기 넘기는 방법 vs 게임 오브젝트 참조로 한 번 받아서 여기서 처리하는 방법
-    public event Action<bool> OnItemClicked;
-
+    private void Awake()
+    {
+        Icon = GetComponent<Image>();
+    }
 
     private void OnEnable()
     {
@@ -30,10 +30,34 @@ public class ItemUI : MonoBehaviour
         itemClickButton.onClick.RemoveAllListeners();
     }
 
-    
+    public void SetData(ItemData itemData)
+    {
+        Data = itemData;
+        SetItemInfo();
+    }
+
+    public void Consume()
+    {
+
+    }
+
+    public void Equip(bool isActive)
+    {
+        equipBackgroundImage.SetActive(isActive);
+    }
+
+    private void SetItemInfo()
+    {
+        if (Icon == null)
+            Icon = GetComponent<Image>();
+
+        Icon.sprite = Data.icon;
+    }
 
     private void OnClickItem()
     {
-        //OnItemClicked?.Invoke();
+        OnItemClicked?.Invoke(true, this);
     }
+
+    
 }

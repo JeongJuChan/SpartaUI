@@ -27,32 +27,71 @@ public class InventoryUI : MonoBehaviour
     private GridLayoutGroup _gridLayoutGroup;
 
     [Header("Item Management")]
-    private GameObject[] itemArr;
+    [SerializeField] private GameObject itemUIPrefab;
+    private GameObject[] itemFrameArr;
     private int _currentIdx;
+    
+
+    [Header("Init Items")]
+    [SerializeField] private Item[] items;
+    [SerializeField] private GameObject itemPopupUI;
+    
 
     private void Awake()
     {
         _gridLayoutGroup = _inventoryRectTramsform.GetComponent<GridLayoutGroup>();
     }
 
+    private void OnEnable()
+    {
+        inventoryBackButton.onClick.AddListener(OnClickBackButton);
+    }
+
+
     void Start()
     {
         itemSize = _gridLayoutGroup.cellSize.y;
         itemSpace = _gridLayoutGroup.spacing.y;
 
-        itemArr = new GameObject[_inventoryRectTramsform.childCount];
+        itemFrameArr = new GameObject[_inventoryRectTramsform.childCount];
         InitItemArr();
         InitContentSize();
+
+        gameObject.SetActive(false);
+
+        InitItems();
     }
 
     
+
+    private void OnDisable()
+    {
+        inventoryBackButton.onClick.RemoveAllListeners();
+    }
+
+    private void OnClickBackButton()
+    {
+        mainChoicePanel.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    private void InitItems()
+    {
+        foreach (var item in items)
+        {
+            ItemUI itemUI = Instantiate(itemUIPrefab, itemFrameArr[_currentIdx].transform).GetComponent<ItemUI>();
+            //itemUI.
+            //item.ItemData
+        }
+    }
+
     private void InitItemArr()
     {
         int i = 0;
 
         foreach (RectTransform trans in _inventoryRectTramsform)
         {
-            itemArr[i] = trans.gameObject;
+            itemFrameArr[i] = trans.gameObject;
             i++;
         }
     }
@@ -60,7 +99,7 @@ public class InventoryUI : MonoBehaviour
     private void InitContentSize()
     {
         _totalItemSize = itemSpace + itemSize;
-        float initYSize = (itemArr.Length / initRowSize - initColumnSize) * _totalItemSize;
+        float initYSize = (itemFrameArr.Length / initRowSize - initColumnSize) * _totalItemSize;
         Vector2 sizeDelta = _inventoryRectTramsform.sizeDelta;
         sizeDelta.y = initYSize;
         _inventoryRectTramsform.sizeDelta = sizeDelta;

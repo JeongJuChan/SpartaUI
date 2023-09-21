@@ -16,6 +16,7 @@ public class ItemData : ScriptableObject
     public string description;
     public ItemType type;
     public Sprite icon;
+    public bool isEquipped;
 
     [Header("Item Stats")]
     public float attack;

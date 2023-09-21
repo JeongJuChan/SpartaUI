@@ -16,8 +16,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject mainChoicePanel;
 
     [Header("ItemUI Size")]
-    [SerializeField] private float itemSize;
-    [SerializeField] private float itemSpace;
+    private float itemSize;
+    private float itemSpace;
     private float _totalItemSize;
 
     [Header("InventoryUI Content")]
@@ -28,14 +28,16 @@ public class InventoryUI : MonoBehaviour
 
     [Header("Item Management")]
     [SerializeField] private GameObject itemUIPrefab;
+    [SerializeField] private UsePanel usePanel;
     private GameObject[] itemFrameArr;
     private int _currentIdx;
     
 
     [Header("Init Items")]
     [SerializeField] private Item[] items;
-    [SerializeField] private GameObject itemPopupUI;
-    
+
+    [Header("Current ItemUI")]
+    private ItemUI _currentItemUI;
 
     private void Awake()
     {
@@ -69,6 +71,16 @@ public class InventoryUI : MonoBehaviour
         inventoryBackButton.onClick.RemoveAllListeners();
     }
 
+    private void OnDestroy()
+    {
+        foreach (var itemUI in _inventoryRectTramsform.GetComponentsInChildren<ItemUI>())
+        {
+            itemUI.OnItemClicked -= ActiveUsePopup;
+        }
+
+
+    }
+
     private void OnClickBackButton()
     {
         mainChoicePanel.SetActive(true);
@@ -80,9 +92,40 @@ public class InventoryUI : MonoBehaviour
         foreach (var item in items)
         {
             ItemUI itemUI = Instantiate(itemUIPrefab, itemFrameArr[_currentIdx].transform).GetComponent<ItemUI>();
+            itemUI.SetData(item.itemData);
+            itemUI.OnItemClicked += ActiveUsePopup;
+
+            //usePanel.OnClickConformButton += itemUI.UpdatePlayerData;
             //itemUI.
             //item.ItemData
+            _currentIdx++;
         }
+
+        usePanel.OnUsed += OnUsedItem;
+    }
+
+    private void ActiveUsePopup(bool isActive, ItemUI itemUI)
+    {
+        _currentItemUI = itemUI;
+        usePanel.SetCurrentItemData(itemUI.Data);
+        usePanel.gameObject.SetActive(isActive);
+        
+    }
+
+    private void OnUsedItem()
+    {
+        switch (_currentItemUI.Data.type)
+        {
+            case ItemType.Equipment:
+                _currentItemUI.Equip(!_currentItemUI.Data.isEquipped);
+                _currentItemUI.Data.isEquipped = !_currentItemUI.Data.isEquipped;
+                break;
+            case ItemType.Consumable:
+                _currentItemUI.Consume();
+                break;
+        }
+
+        _currentItemUI = null;
     }
 
     private void InitItemArr()

@@ -18,17 +18,24 @@ public class InventoryUI : MonoBehaviour
     [Header("ItemUI Size")]
     [SerializeField] private float itemSize;
     [SerializeField] private float itemSpace;
+    private float _totalItemSize;
 
     [Header("InventoryUI Content")]
     [SerializeField] private RectTransform _inventoryRectTramsform;
     [SerializeField] private int initRowSize = 4;
     [SerializeField] private int initColumnSize = 4;
     private GridLayoutGroup _gridLayoutGroup;
-    private float preYPos;
 
+    [Header("Item Management")]
+    [SerializeField] private GameObject itemUIPrefab;
+    private GameObject[] itemFrameArr;
+    private int _currentIdx;
+    
 
-    [Header("Item Active Management")]
-    private GameObject[] itemArr;
+    [Header("Init Items")]
+    [SerializeField] private Item[] items;
+    [SerializeField] private GameObject itemPopupUI;
+    
 
     private void Awake()
     {
@@ -37,17 +44,45 @@ public class InventoryUI : MonoBehaviour
 
     private void OnEnable()
     {
-        inventoryScrollView.onValueChanged.AddListener(OnScrollMoved);
+        inventoryBackButton.onClick.AddListener(OnClickBackButton);
     }
+
 
     void Start()
     {
         itemSize = _gridLayoutGroup.cellSize.y;
         itemSpace = _gridLayoutGroup.spacing.y;
 
-        itemArr = new GameObject[_inventoryRectTramsform.childCount];
+        itemFrameArr = new GameObject[_inventoryRectTramsform.childCount];
         InitItemArr();
         InitContentSize();
+
+        gameObject.SetActive(false);
+
+        InitItems();
+    }
+
+    
+
+    private void OnDisable()
+    {
+        inventoryBackButton.onClick.RemoveAllListeners();
+    }
+
+    private void OnClickBackButton()
+    {
+        mainChoicePanel.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    private void InitItems()
+    {
+        foreach (var item in items)
+        {
+            ItemUI itemUI = Instantiate(itemUIPrefab, itemFrameArr[_currentIdx].transform).GetComponent<ItemUI>();
+            //itemUI.
+            //item.ItemData
+        }
     }
 
     private void InitItemArr()
@@ -56,32 +91,17 @@ public class InventoryUI : MonoBehaviour
 
         foreach (RectTransform trans in _inventoryRectTramsform)
         {
-            itemArr[i] = trans.gameObject;
+            itemFrameArr[i] = trans.gameObject;
             i++;
         }
     }
 
     private void InitContentSize()
     {
+        _totalItemSize = itemSpace + itemSize;
+        float initYSize = (itemFrameArr.Length / initRowSize - initColumnSize) * _totalItemSize;
         Vector2 sizeDelta = _inventoryRectTramsform.sizeDelta;
-        sizeDelta.y = (itemSpace + itemSize) * ((itemArr.Length / initRowSize) - initColumnSize);
+        sizeDelta.y = initYSize;
         _inventoryRectTramsform.sizeDelta = sizeDelta;
     }
-
-    private void OnDisable()
-    {
-        inventoryScrollView.onValueChanged.RemoveAllListeners();
-    }
-    private void OnScrollMoved(Vector2 newPos)
-    {
-        if (preYPos < newPos.y)
-        {
-
-        }
-        else if (preYPos >  newPos.y)
-        {
-
-        }
-    }
-
 }

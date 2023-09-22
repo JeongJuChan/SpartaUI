@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +13,12 @@ public class InventoryUI : MonoBehaviour
     [Header("Back Button")]
     [SerializeField] private Button inventoryBackButton;
 
-    [Header("Main Choice UI")]
+    [Header("Main ChoiceUI")]
     [SerializeField] private GameObject mainChoicePanel;
+
+    // 과제 막바지 와서 느낀 점 : 팝업 UI 매니저 필수.. -> 언제 생기고 사라질지 모르는 UI들이 너무 많음 (참조가 풀릴 가능성 다수)
+    [Header("StatusUI")]
+    [SerializeField] private StatusUI statusUI;
 
     [Header("ItemUI Size")]
     private float itemSize;
@@ -29,15 +34,16 @@ public class InventoryUI : MonoBehaviour
     [Header("Item Management")]
     [SerializeField] private GameObject itemUIPrefab;
     [SerializeField] private UsePanel usePanel;
+    [SerializeField] private TextMeshProUGUI inventoryCountText;
     private GameObject[] itemFrameArr;
+    private List<ItemUI> _itemUIs = new List<ItemUI>();
     private int _currentIdx;
-    
 
     [Header("Init Items")]
     [SerializeField] private Item[] items;
 
-    [Header("Current ItemUI")]
-    private ItemUI _currentItemUI;
+    [Header("Selected ItemUI")]
+    private ItemUI _selectedItemUI;
 
     private void Awake()
     {
@@ -48,7 +54,6 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryBackButton.onClick.AddListener(OnClickBackButton);
     }
-
 
     void Start()
     {
@@ -64,8 +69,6 @@ public class InventoryUI : MonoBehaviour
         InitItems();
     }
 
-    
-
     private void OnDisable()
     {
         inventoryBackButton.onClick.RemoveAllListeners();
@@ -77,6 +80,11 @@ public class InventoryUI : MonoBehaviour
         {
             itemUI.OnItemClicked -= ActiveUsePopup;
         }
+    }
+    
+    private void UpdateInventoryCount()
+    {
+        inventoryCountText.text = $"{_itemUIs.Count} / {itemFrameArr.Length}";  
     }
 
     private void OnClickBackButton()
@@ -92,9 +100,11 @@ public class InventoryUI : MonoBehaviour
             ItemUI itemUI = Instantiate(itemUIPrefab, itemFrameArr[_currentIdx].transform).GetComponent<ItemUI>();
             itemUI.SetData(item.itemData);
             itemUI.OnItemClicked += ActiveUsePopup;
+            _itemUIs.Add(itemUI);
             _currentIdx++;
         }
 
+        UpdateInventoryCount();
         usePanel.OnUsed += OnUsedItem;
     }
 
@@ -104,7 +114,7 @@ public class InventoryUI : MonoBehaviour
         ItemData newData = InitNewData(tempData);
 
         itemUI.SetData(newData);
-        _currentItemUI = itemUI;
+        _selectedItemUI = itemUI;
         usePanel.SetCurrentItemData(itemUI.Data);
         usePanel.gameObject.SetActive(isActive);
     }
@@ -127,18 +137,20 @@ public class InventoryUI : MonoBehaviour
 
     private void OnUsedItem()
     {
-        switch (_currentItemUI.Data.type)
+        switch (_selectedItemUI.Data.type)
         {
             case ItemType.Equipment:
-                _currentItemUI.Equip(!_currentItemUI.Data.isEquipped);
-                _currentItemUI.Data.isEquipped = !_currentItemUI.Data.isEquipped;
+                _selectedItemUI.Equip(!_selectedItemUI.Data.isEquipped);
+                _selectedItemUI.Data.isEquipped = !_selectedItemUI.Data.isEquipped;
                 break;
             case ItemType.Consumable:
-                _currentItemUI.Consume();
+                _selectedItemUI.Consume();
                 break;
         }
 
-        _currentItemUI = null;
+        statusUI.UpdateUI(_selectedItemUI.Data);
+
+        _selectedItemUI = null;
     }
 
     private void InitItemArr()

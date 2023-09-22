@@ -13,10 +13,7 @@ public class NameSetting : MonoBehaviour
     [SerializeField] private Button changeNameButton;
     [SerializeField] private int nameMinLength = 2;
     [SerializeField] private int nameMaxLength = 8;
-
-    [Header("Info Texts")]
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private MainUI mainUI;
 
     private void Start()
     {
@@ -49,8 +46,7 @@ public class NameSetting : MonoBehaviour
             return;
         }
 
-        nameText.text = nameInputField.text;
-        descriptionText.text = $"{nameInputField.text}는 용사입니다.";
+        mainUI.UpdateCharacterName(nameInputField.text);
         changeNameButton.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

@@ -6,10 +6,10 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     [Header("Character Info")]
-    public string displayName;
-    public string level;
-    public string exp;
+    public int level;
+    public int exp;
     public string description;
+    public int gold;
 
     [Header("Character Default Stat")]
     public float attack;

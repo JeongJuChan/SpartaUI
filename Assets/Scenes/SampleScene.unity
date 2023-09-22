@@ -5437,7 +5437,7 @@ GameObject:
   - component: {fileID: 647901432}
   - component: {fileID: 647901433}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ExpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7108,6 +7108,11 @@ Transform:
   - {fileID: 1689551242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &791284433 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1338158378579552501, guid: 0b764a1b0b8e7be49840198c1c767688, type: 3}
+  m_PrefabInstance: {fileID: 1746233650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &798223526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8065,7 +8070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20,000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 572bc330871d031498041654e37a4d15, type: 2}
   m_sharedMaterial: {fileID: 1635041412475850864, guid: 572bc330871d031498041654e37a4d15, type: 2}
@@ -8800,12 +8805,10 @@ MonoBehaviour:
   itemImage: {fileID: 4471949582301213942}
   itemName: {fileID: 7386219867663173470}
   itemDescription: {fileID: 8912279409545290442}
-  abilityImage: {fileID: 0}
-  statText: {fileID: 0}
   attackInfoText: {fileID: 8912279408227757947}
   shieldInfoText: {fileID: 564473453}
   healthInfoText: {fileID: 1546259381}
-  ciriticalInfoText: {fileID: 1324888229}
+  criticalInfoText: {fileID: 0}
 --- !u!114 &894667786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17442,6 +17445,52 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2499388374119800241, guid: 900625d8e468d504b8285e8c134aa5b9, type: 3}
   m_PrefabInstance: {fileID: 1605296742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1607239837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607239839}
+  - component: {fileID: 1607239838}
+  m_Layer: 0
+  m_Name: Character
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1607239838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607239837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2b7cc344ce0da479f3393cfe3e269e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 0cad568db472aef4abc2f5b023aae417, type: 2}
+--- !u!4 &1607239839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607239837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 791284433}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1613159126
 GameObject:
   m_ObjectHideFlags: 0
@@ -18606,7 +18655,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1607239839}
     m_Modifications:
     - target: {fileID: 342391765925353777, guid: 0b764a1b0b8e7be49840198c1c767688, type: 3}
       propertyPath: m_Layer
@@ -18778,15 +18827,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1338158378579552501, guid: 0b764a1b0b8e7be49840198c1c767688, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1338158378579552501, guid: 0b764a1b0b8e7be49840198c1c767688, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1338158378579552501, guid: 0b764a1b0b8e7be49840198c1c767688, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1338158378579552501, guid: 0b764a1b0b8e7be49840198c1c767688, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -22147,12 +22196,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameSettingButton: {fileID: 1817710513}
   nameSettingPanel: {fileID: 205009848852986842}
-  goldText: {fileID: 856775978}
   mainChoicePanel: {fileID: 411476655}
   statusButton: {fileID: 865796170}
   inventoryButton: {fileID: 381945280}
   statusPanel: {fileID: 1661270168}
   inventoryPanel: {fileID: 158937951}
+  levelText: {fileID: 1546111118}
+  expSlider: {fileID: 647901433}
+  fillText: {fileID: 2041260583}
+  descriptionText: {fileID: 1508324329}
+  goldText: {fileID: 856775978}
 --- !u!1 &2039164452
 GameObject:
   m_ObjectHideFlags: 0
@@ -26445,6 +26498,6 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 248573073}
-  - {fileID: 1746233650}
   - {fileID: 1132325744}
   - {fileID: 785771633}
+  - {fileID: 1607239839}

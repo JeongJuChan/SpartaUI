@@ -1,14 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UsePanel : MonoBehaviour
 {
-    private ItemUI _currentItemUI;
-
     [Header("Item Use")]
     [SerializeField] private TextMeshProUGUI useTitleText;
     [SerializeField] private TextMeshProUGUI useQuestionText;

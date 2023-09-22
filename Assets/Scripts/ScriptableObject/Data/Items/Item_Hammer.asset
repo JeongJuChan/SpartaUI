@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f3ea74813b948e40b70490439cbdc32, type: 3}
-  m_Name: Item_Shield
+  m_Name: Item_Hammer
   m_EditorClassIdentifier: 
-  displayName: "\uBC29\uD328"
-  description: "\uC5B4\uB514\uC11C\uB098 \uBCFC \uC218 \uC788\uB294 \uB098\uBB34
-    \uBC29\uD328\uB2E4."
+  displayName: "\uB9DD\uCE58"
+  description: "\uAD49\uC7A5\uD788 \uBB34\uAC70\uC6B4 \uB9DD\uCE58\uB2E4."
   type: 0
-  icon: {fileID: 21300000, guid: 3dfe5b5109b67429dae6b016513faeec, type: 3}
-  attack: 0
-  defense: 5
+  icon: {fileID: 21300000, guid: 7535b2b905b234b0ea2137b82b8b07f4, type: 3}
+  isEquipped: 0
+  attack: 5
+  defense: 0
   health: 0
-  critical: 0
-  equipPrefab: {fileID: 106938356439800904, guid: 18f29e80816a3d143b43e9a148d39649, type: 3}
+  critical: 10
+  equipPrefab: {fileID: 5882740418562934682, guid: dea89ad487fba0d43998917fd5f30879, type: 3}

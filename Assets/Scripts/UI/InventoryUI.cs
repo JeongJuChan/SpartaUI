@@ -77,8 +77,6 @@ public class InventoryUI : MonoBehaviour
         {
             itemUI.OnItemClicked -= ActiveUsePopup;
         }
-
-
     }
 
     private void OnClickBackButton()
@@ -94,10 +92,6 @@ public class InventoryUI : MonoBehaviour
             ItemUI itemUI = Instantiate(itemUIPrefab, itemFrameArr[_currentIdx].transform).GetComponent<ItemUI>();
             itemUI.SetData(item.itemData);
             itemUI.OnItemClicked += ActiveUsePopup;
-
-            //usePanel.OnClickConformButton += itemUI.UpdatePlayerData;
-            //itemUI.
-            //item.ItemData
             _currentIdx++;
         }
 
@@ -106,10 +100,29 @@ public class InventoryUI : MonoBehaviour
 
     private void ActiveUsePopup(bool isActive, ItemUI itemUI)
     {
+        ItemData tempData = itemUI.Data;
+        ItemData newData = InitNewData(tempData);
+
+        itemUI.SetData(newData);
         _currentItemUI = itemUI;
         usePanel.SetCurrentItemData(itemUI.Data);
         usePanel.gameObject.SetActive(isActive);
-        
+    }
+
+    private ItemData InitNewData(ItemData tempData)
+    {
+        ItemData itemData = new ItemData();
+        itemData.displayName = tempData.displayName;
+        itemData.description = tempData.description;
+        itemData.type = tempData.type;
+        itemData.isEquipped = tempData.isEquipped;
+        itemData.attack = tempData.attack;
+        itemData.health = tempData.health;
+        itemData.defense = tempData.defense;
+        itemData.critical = tempData.critical;
+        itemData.icon = tempData.icon;
+        itemData.equipPrefab = tempData.equipPrefab;
+        return itemData;
     }
 
     private void OnUsedItem()

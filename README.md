@@ -13,13 +13,16 @@
 중심 구현 : 필수 요구사항 중심으로 구현
 
 ## 시연
+![시연](https://github.com/JeongJuChan/SpartaUI/assets/95285906/41365228-b228-44e1-9159-8697e132d526)
 
 ## 구현한 기능
 
 ### 캐릭터 메인 정보 UI
 캐릭터의 메인 정보UI(이름, 레벨, 경험치, 설명, 골드)를 구현하였습니다.
 https://github.com/JeongJuChan/SpartaUI/blob/c45b79e3c75ca0a76de018701c0fe7d6ab20a74b/Assets/Scripts/UI/MainUI.cs#L1
+https://github.com/JeongJuChan/SpartaUI/blob/6cfc5657c0802f5870124579a9b586c02ee05e9a/Assets/Scripts/UI/NameSetting.cs#L1
 ![image](https://github.com/JeongJuChan/SpartaUI/assets/95285906/b454802c-fc09-4ca5-99b2-bfb1d75a6c1f)
+![image](https://github.com/JeongJuChan/SpartaUI/assets/95285906/3f66727a-347e-44d0-a253-c0de08dd2ece)
 
 ### 캐릭터 Stat UI
 캐릭터 정보UI(공격력, 방어력, 체력, 치명타)를 구현하였습니다.

@@ -1483,11 +1483,13 @@ MonoBehaviour:
   inventoryScrollView: {fileID: 1124489738}
   inventoryBackButton: {fileID: 1339014347}
   mainChoicePanel: {fileID: 411476655}
+  statusUI: {fileID: 1661270170}
   _inventoryRectTramsform: {fileID: 1969159298}
   initRowSize: 4
   initColumnSize: 4
   itemUIPrefab: {fileID: 6961676177149070277, guid: 5a013a8e5861dff47932b4b7efd76543, type: 3}
   usePanel: {fileID: 894667785}
+  inventoryCountText: {fileID: 1297100980}
   items:
   - {fileID: 9026212454505959364, guid: 959d0374e722469498950e643a6b3e6a, type: 3}
   - {fileID: 7736800070371870457, guid: dea89ad487fba0d43998917fd5f30879, type: 3}
@@ -8808,7 +8810,7 @@ MonoBehaviour:
   attackInfoText: {fileID: 8912279408227757947}
   shieldInfoText: {fileID: 564473453}
   healthInfoText: {fileID: 1546259381}
-  criticalInfoText: {fileID: 0}
+  criticalInfoText: {fileID: 1324888229}
 --- !u!114 &894667786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11892,7 +11894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 572bc330871d031498041654e37a4d15, type: 2}
   m_sharedMaterial: {fileID: 1635041412475850864, guid: 572bc330871d031498041654e37a4d15, type: 2}
@@ -16858,7 +16860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 572bc330871d031498041654e37a4d15, type: 2}
   m_sharedMaterial: {fileID: 1635041412475850864, guid: 572bc330871d031498041654e37a4d15, type: 2}
@@ -17686,7 +17688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 572bc330871d031498041654e37a4d15, type: 2}
   m_sharedMaterial: {fileID: 1635041412475850864, guid: 572bc330871d031498041654e37a4d15, type: 2}
@@ -18631,8 +18633,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5637012965772882236, guid: 93a73e48ef5eb4a65a06a8e5b5f9dcac, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -20072,7 +20074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -4825003183142298931, guid: 2d076db0d3c194220b501340f6539602, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21053,7 +21055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 572bc330871d031498041654e37a4d15, type: 2}
   m_sharedMaterial: {fileID: 1635041412475850864, guid: 572bc330871d031498041654e37a4d15, type: 2}
@@ -22201,6 +22203,7 @@ MonoBehaviour:
   inventoryButton: {fileID: 381945280}
   statusPanel: {fileID: 1661270168}
   inventoryPanel: {fileID: 158937951}
+  nameText: {fileID: 1447750033}
   levelText: {fileID: 1546111118}
   expSlider: {fileID: 647901433}
   fillText: {fileID: 2041260583}
@@ -24561,8 +24564,7 @@ MonoBehaviour:
   changeNameButton: {fileID: 1817710513}
   nameMinLength: 2
   nameMaxLength: 8
-  nameText: {fileID: 1447750033}
-  descriptionText: {fileID: 1508324329}
+  mainUI: {fileID: 2034700715}
 --- !u!114 &3891368278239829895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26298,13 +26300,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -26334,7 +26336,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 23.217049, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

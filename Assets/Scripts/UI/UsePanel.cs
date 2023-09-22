@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UsePanel : MonoBehaviour
 {
+    private ItemUI _currentItemUI;
+
     [Header("Item Use")]
     [SerializeField] private TextMeshProUGUI useTitleText;
     [SerializeField] private TextMeshProUGUI useQuestionText;

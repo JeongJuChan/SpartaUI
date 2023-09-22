@@ -107,7 +107,6 @@ public class InventoryUI : MonoBehaviour
         _currentItemUI = itemUI;
         usePanel.SetCurrentItemData(itemUI.Data);
         usePanel.gameObject.SetActive(isActive);
-
     }
 
     private ItemData InitNewData(ItemData tempData)
